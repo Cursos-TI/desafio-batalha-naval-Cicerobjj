@@ -1,0 +1,49 @@
+//DESAFIO BATALHA NAVAL AVENTUREIRO
+#include <stdio.h>
+
+int main() {
+    char* colunas[10] = {"a ", "b ", "c ", "d ", "e ", "f ", "g ", "h ", "i ", "j "};
+    char* linhas[10] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+    char* naviohorizontal[3] = {"3s", "3s", "3s"};
+    char* naviovertical[3] = {"3s", "3s", "3s"};
+    char* naviodiagonal1[3] = {"3s", "3s", "3s"}; 
+    char* naviodiagonal2[3] = {"3s", "3s", "3s"}; 
+
+    
+    printf("   ");
+    for (int j = 0; j < 10; j++) {
+        printf("%s ", colunas[j]);
+    }
+    printf("\n");
+
+    
+    for (int i = 0; i < 10; i++) {
+        printf("%-3s", linhas[i]);
+        for (int j = 0; j < 10; j++) {
+
+            
+            if (i == 0 && j >= 2 && j <= 4) {
+                printf("%s ", naviohorizontal[j - 2]);
+            }
+            
+            else if (j == 8 && i >= 7 && i <= 9) {
+                printf("%s ", naviovertical[i - 7]);
+            }
+            
+            else if ((i == 9 && j == 0) || (i == 8 && j == 1) || (i == 7 && j == 2)) {
+                printf("%s ", naviodiagonal1[9 - i]);
+            }
+            
+            else if ((i == 0 && j == 9) || (i == 1 && j == 8) || (i == 2 && j == 7)) {
+                printf("%s ", naviodiagonal2[i]);
+            }
+            
+            else {
+                printf("0  ");
+            }
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
